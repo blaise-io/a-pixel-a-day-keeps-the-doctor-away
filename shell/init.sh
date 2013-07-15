@@ -6,7 +6,7 @@ email=$3
 name=$4
 
 git clone $repository $dir
-git push --set-upstream origin master
 cd $dir
+git push --set-upstream origin master
 git config user.email "$email"
 git config user.name "$name"
