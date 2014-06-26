@@ -13,7 +13,8 @@ OUTPUT_TEXT = process.env.ONE_PIXEL_WRITE
 
 CHARS = JSON.parse(fs.readFileSync(__dirname + '/font.json'))
 CHAR_SPACE_WIDTH = 1
-OUTPUT_FILE = __dirname + '/../push/pixels.txt'
+OUTPUT_DIR = fs.realpathSync(__dirname + '/../push')
+OUTPUT_FILE = OUTPUT_DIR + '/pixels.txt'
 
 
 getNumPaintDays = () ->
@@ -98,5 +99,15 @@ main = ->
 
     if paintToday
         fs.writeFileSync(fs.realpathSync(OUTPUT_FILE), str)
+
+        sys = require('sys')
+        exec = require('child_process').exec;
+        puts = (error, stdout, stderr) ->
+            console.log(error, stdout, stderr)
+
+        exec("cd #{OUTPUT_DIR}", puts);
+        exec("git add #{OUTPUT_FILE}", puts);
+        exec("git commit --author='A Pixel a Day Keeps the Doctor Away <blaisekal+dummy@gmail.com>' -m 'Pixel day'", puts);
+        exec("git push", puts);
 
 main()
