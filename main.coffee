@@ -29,16 +29,19 @@ class Main
 
         @reportPotentialOverflow()
         @checkOutputDir()
-        @checkRepository()
-        @checkStarted()
-        @checkDone()
+        @checkRepository(( ->
+            @captureLog.apply(this, arguments)
 
-        @collectPixels()
-        if @paintToday
-            @writePixelsToFile()
-            @commitPixelFile()
+            @checkStarted()
+            @checkDone()
 
-        @reportProgress()
+            @collectPixels()
+            if @paintToday
+                @writePixelsToFile()
+                @commitPixelFile()
+
+            @reportProgress()
+        ).bind(this))
 
     validateConfig: ->
         @detectMissingInput()
@@ -77,7 +80,7 @@ class Main
             fs.mkdirSync(config.outputDir)
         config.outputDir = fs.realpathSync(config.outputDir) + '/'
 
-    checkRepository: ->
+    checkRepository: (callbackFn) ->
         if not fs.existsSync(config.outputDir + config.outputFile)
             cmd = [
                 "#{__dirname}/setup.sh",
@@ -86,7 +89,9 @@ class Main
                 JSON.stringify(config.userEmail),
                 JSON.stringify(config.userName)
             ]
-            child_process.exec(cmd.join(' '), @captureLog);
+            child_process.exec(cmd.join(' '), callbackFn);
+        else
+            callbackFn()
 
     checkStarted: ->
         if @NOW < @startDate
