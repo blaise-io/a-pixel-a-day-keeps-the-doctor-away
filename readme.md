@@ -1,6 +1,6 @@
 # A Pixel a Day Keeps the Doctor Away
 
-Create a message on your commit history graph on Github, where one day
+Create a message on your commit history graph on GitHub, where one day
 represents one pixel.
 
 ## Installation

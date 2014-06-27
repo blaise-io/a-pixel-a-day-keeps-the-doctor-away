@@ -11,11 +11,11 @@ module.exports =
     # Message used for committing to GitHub.
     commitMessage: 'Pixel day!'
 
-    # Github repository that you have access to.
+    # GitHub repository that you have access to.
     repository: 'https://github.com/my-username/my-project.git'
 
     # This is to ensure you don't accidentally pollute the
-    # history graph for your main Github account.
+    # history graph for your main GitHub account.
     userEmail: 'hello@example.org'
     userName: 'John Doe'
 
