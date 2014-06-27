@@ -6,5 +6,5 @@ message=$3
 
 cd "$dir"
 git add "$file"
-git commit -m "$message" --author="blaisekal+dummy@gmail.com"
+git commit -m "$message"
 git push
