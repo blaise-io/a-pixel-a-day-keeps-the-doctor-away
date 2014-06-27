@@ -1,4 +1,8 @@
-cd $1
-git add $2
-git commit --author='A Pixel a Day Keeps the Doctor Away <blaisekal+dummy@gmail.com>' -m 'Pixel day'
+dir=$1
+file=$2
+message=$3
+
+cd "$dir"
+git add "$file"
+git commit -m "$message" --author="blaisekal+dummy@gmail.com"
 git push
