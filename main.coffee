@@ -83,8 +83,8 @@ class Main
                 "#{__dirname}/setup.sh",
                 JSON.stringify(config.outputDir),
                 JSON.stringify(config.repository),
-                JSON.stringify(config.userName),
                 JSON.stringify(config.userEmail),
+                JSON.stringify(config.userName)
             ]
             child_process.exec(cmd.join(' '), @captureLog);
 
