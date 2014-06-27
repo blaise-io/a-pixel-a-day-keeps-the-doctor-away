@@ -4,5 +4,6 @@ email=$3
 name=$4
 
 git clone $repository $dir
+cd $dir
 git config user.email "$email"
 git config user.name "$name"
