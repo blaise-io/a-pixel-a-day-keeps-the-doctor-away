@@ -6,8 +6,8 @@ try
     config = require('./config.js')
     config.startDate = config.startDate or new Date()
 catch
-    console.log('Copy config.example.coffee to config.coffee and'
-                'adjust to match your environment.')
+    console.log("Copy config.example.coffee to config.coffee and" +
+                "adjust to match your environment.")
     process.exit(1)
 
 
@@ -113,7 +113,7 @@ class Main
     reportPotentialOverflow: ->
         durationWeeks = Math.ceil(@duration / @DAYS_IN_WEEK)
         if @WEEKS_IN_YEAR < durationWeeks
-            console.log("Complete text takes #{durationWeeks} weeks,"
+            console.log("Complete text takes #{durationWeeks} weeks, " +
                         "history chart shows #{@WEEKS_IN_YEAR} full weeks.")
 
     collectPixels: ->
