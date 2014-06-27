@@ -176,7 +176,7 @@ class Main
         console.log('---')
         console.log(str)
         console.log('---')
-        fs.writeFileSync(config.outputDir + config.outputFile, str + new Date())
+        fs.writeFileSync(config.outputDir + config.outputFile, str)
 
     captureLog: () ->
         (console.log("shell: #{arg}") if arg) for arg in arguments
