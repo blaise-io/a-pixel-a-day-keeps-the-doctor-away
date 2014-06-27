@@ -3,7 +3,7 @@ path = require('path')
 
 
 
-DATE_START = '2014-06-26T12:00:00'
+DATE_START = new Date('2014-06-29T12:00:00')
 
 DAY_DURATION_MS = 3600 * 24 * 1000;
 DAYS_IN_WEEK = 7
@@ -16,6 +16,9 @@ CHAR_SPACE_WIDTH = 1
 OUTPUT_DIR = fs.realpathSync(__dirname + '/../push')
 OUTPUT_FILE = OUTPUT_DIR + '/pixels.txt'
 
+if 0 isnt new Date(DATE_START).getDay()
+    console.error('Start date not a Sunday!')
+    process.exit(1)
 
 getNumPaintDays = () ->
     days = 0
@@ -49,7 +52,7 @@ main = ->
 
     if now < DATE_START
         console.log("Not starting yet.")
-        return
+        process.exit(0)
 
     numPaintDays = getNumPaintDays()
     console.log("Started on     : #{DATE_START}")
@@ -57,10 +60,6 @@ main = ->
     console.log("Columns        : #{numPaintDays / DAYS_IN_WEEK} of #{WEEKS_IN_YEAR}")
 
     day = Math.floor((+now - DATE_START) / DAY_DURATION_MS);
-
-    if 0 isnt now.getDay()
-        console.log("Starting this Sunday.")
-        return
 
     letter = ''
     daysInLetter = 0
@@ -105,9 +104,6 @@ main = ->
         puts = (error, stdout, stderr) ->
             console.log(error, stdout, stderr)
 
-        exec("cd #{OUTPUT_DIR}", puts);
-        exec("git add #{OUTPUT_FILE}", puts);
-        exec("git commit --author='A Pixel a Day Keeps the Doctor Away <blaisekal+dummy@gmail.com>' -m 'Pixel day'", puts);
-        exec("git push", puts);
+        exec("#{__dirname}/commit.sh '#{OUTPUT_DIR}' '#{OUTPUT_FILE}'", puts);
 
 main()
