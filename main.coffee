@@ -4,7 +4,6 @@ child_process = require('child_process')
 
 try
     config = require('./config.js')
-    config.startDate = config.startDate or new Date()
 catch
     console.log("Copy config.example.coffee to config.coffee and" +
                 "adjust to match your environment.")
