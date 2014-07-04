@@ -1,11 +1,11 @@
 # A Pixel a Day Keeps the Doctor Away
 
-Write text on your commit history graph on GitHub, where one day
+Write text on your contribution history graph on GitHub, where one day
 represents one pixel.
 
-![Example output](https://i.imgur.com/nUequKN.png)
+## [View a live example][1]
 
- - [View a live example here][1]
+![Example output](https://i.imgur.com/nUequKN.png)
 
 ## Installation
 
