@@ -1,11 +1,11 @@
+# This project is superseded by https://github.com/blaise-io/contribution
+
+---
+
 # A Pixel a Day Keeps the Doctor Away
 
 Write text on your contribution history graph on GitHub, where one day
 represents one pixel.
-
-## [View a live example][1]
-
-![Example output](https://i.imgur.com/nUequKN.png)
 
 ## Installation
 
